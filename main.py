@@ -1,10 +1,24 @@
 import pyotp
 import time
+import nltk
+from nltk.corpus import words
 
-totp = pyotp.TOTP('base32secret3232')
-a = totp.now() # => '492039'
+nltk.download('words')
 
-# OTP verified for current time
-print(totp.verify(a)) # => True
-time.sleep(30)
-print(totp.verify(a)) # => False
+word_list = words.words()
+
+totp = [0 for i in range(6)]
+sentence = ['' for i in range (6)]
+keys = ['' for i in range (6)]
+
+for i in range(0, 6):
+    keys[i] = pyotp.random_base32()
+    totp[i] = pyotp.TOTP(keys[i])
+    print(totp[i].now())
+    sentence[i] = word_list[int(totp[i].now()) % len(word_list)]
+
+print ("Keys: \n\n")
+for k in keys:
+    print(k)
+
+print(sentence)

@@ -3,4 +3,4 @@ Captcha for Humans
 
 Install Requirements:
 
-`pip install pyotp``
+`pip install pyotp nltk`

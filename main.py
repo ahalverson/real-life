@@ -2,9 +2,9 @@ import pyotp
 import time
 
 totp = pyotp.TOTP('base32secret3232')
-totp.now() # => '492039'
+a = totp.now() # => '492039'
 
 # OTP verified for current time
-totp.verify('492039') # => True
+print(totp.verify(a)) # => True
 time.sleep(30)
-totp.verify('492039') # => False
+print(totp.verify(a)) # => False

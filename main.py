@@ -4,6 +4,8 @@ import time
 
 nltk.download()
 
+n = 6
+
 totp = pyotp.TOTP('base32secret3232')
 a = totp.now() # => '492039'
 
